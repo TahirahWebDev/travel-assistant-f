@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "./plan/PlanContext";
 
 export default function NavbarClient() {
   const { isLoggedIn, user, logout } = useAuth();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Helper to get initials
@@ -17,6 +19,12 @@ export default function NavbarClient() {
   const handleMenuClick = (callback?: () => void) => {
     setMenuOpen(false);
     if (callback) callback();
+  };
+
+  // Handle logout and redirect to home
+  const handleLogout = () => {
+    logout();
+    router.push("/");
   };
 
   return (
@@ -36,7 +44,7 @@ export default function NavbarClient() {
           {isLoggedIn ? (
             <>
               {/* <Link href="/profile" className="block px-4 py-2 hover:bg-gray-100" onClick={() => handleMenuClick()}>Profile</Link> */}
-              <button onClick={() => handleMenuClick(logout)} className="block w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
+              <button onClick={() => handleMenuClick(handleLogout)} className="block w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
             </>
           ) : (
             <>
