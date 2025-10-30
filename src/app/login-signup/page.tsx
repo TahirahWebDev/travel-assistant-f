@@ -19,7 +19,7 @@ export default function LoginSignupPage() {
     e.preventDefault();
     if (isLogin) {
       login({ name: form.name || "User", email: form.email });
-      router.push("/plan");
+      router.push("/");
     } else {
       setSuccess("Signup successful! You can now login.");
       setForm({ name: "", email: "", password: "" });

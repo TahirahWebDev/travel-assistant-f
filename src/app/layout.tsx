@@ -52,44 +52,48 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-transparent`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}>
         <AuthProvider>
           <PlanProvider>
-            <nav className="absolute top-0 left-0 w-full flex justify-center py-6 z-30" style={{background: 'transparent'}}>
-              <div className="flex w-full max-w-6xl items-center justify-between px-4 rounded-3xl" style={{background: 'transparent'}}>
-                {/* Left: Logo */}
-                <div className=" rounded-2xl px-3 py-2  flex items-center" style={{fontFamily: 'inherit'}}>
-                  <img src="/download.png" alt="AI-TraWell Logo" style={{height: '80px'}} />
-                </div>
-                {/* Right: Icons in rounded bar */}
-                <div className="flex items-center bg-white/50 rounded-2xl px-4 py-2 gap-6 shadow-lg ml-auto" style={{backdropFilter: 'blur(4px)'}}>
-                  {/* Home Icon */}
-                  <Link href="/" title="Home" className="focus:outline-none">
-                    <span className="text-black hover:text-blue-600 cursor-pointer flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l9-9 9 9M4.5 10.5V21a1.5 1.5 0 001.5 1.5h3.75a1.5 1.5 0 001.5-1.5v-4.5a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5V21a1.5 1.5 0 001.5 1.5H19.5a1.5 1.5 0 001.5-1.5V10.5" />
-                      </svg>
-                    </span>
-                  </Link>
-                   {/* Itinerary Icon */}
-                  <Link href="/plan" title="Itinerary" className="focus:outline-none">
-                    <span className="text-black hover:text-blue-600 cursor-pointer flex items-center">
-                      {icons[1].svg}
-                    </span>
-                  </Link>
-                  {/* AI Robot Icon */}
-                  <Link href="/chat" title="AI Chat" className="focus:outline-none">
-                    <span className="text-gray-700 hover:text-blue-600 cursor-pointer flex items-center">
-                      <img src="/AI-icon.png" alt="AI Chat" style={{height: '50px', width: '50px'}} />
-                    </span>
-                  </Link>
-                 
-                  {/* User Icon Dropdown */}
-                  <NavbarClient />
+            <nav className="fixed top-0 left-0 w-full bg-white shadow-lg z-50 border-b border-gray-200">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-16">
+                  {/* Logo */}
+                  <div className="flex items-center">
+                    <Link href="/" className="flex items-center">
+                      <img src="/download.png" alt="AI-TraWell Logo" className="h-12 w-auto" />
+                      <span className="ml-2 text-xl font-bold text-gray-900">AI-TraWell</span>
+                    </Link>
+                  </div>
+
+                  {/* Navigation Links */}
+                  <div className="hidden md:flex items-center space-x-8">
+                    <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                      Home
+                    </Link>
+                    <Link href="/plan" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                      Plan Trip
+                    </Link>
+                    <Link href="/chat" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                      AI Chat
+                    </Link>
+                    <NavbarClient />
+                  </div>
+
+                  {/* Mobile menu button */}
+                  <div className="md:hidden">
+                    <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200">
+                      Menu
+                    </button>
+                  </div>
                 </div>
               </div>
             </nav>
-            {children}
+
+            {/* Add padding to account for fixed navbar */}
+            <div className="pt-16">
+              {children}
+            </div>
           </PlanProvider>
         </AuthProvider>
       </body>
