@@ -33,6 +33,20 @@ export default function ChatPage() {
     }
   }, [isLoggedIn, router]);
 
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.push('/login-signup');
+    }
+  }, [isLoggedIn, router]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center px-4">
@@ -53,14 +67,6 @@ export default function ChatPage() {
       </div>
     );
   }
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();

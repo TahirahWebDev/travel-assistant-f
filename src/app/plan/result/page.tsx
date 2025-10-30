@@ -103,7 +103,7 @@ export default function PlanResultPage() {
             </span>
           </h1>
           <p className="text-lg text-gray-600">
-            Here's your personalized travel plan for an unforgettable journey
+            Here&apos;s your personalized travel plan for an unforgettable journey
           </p>
         </div>
 
