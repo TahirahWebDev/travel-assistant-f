@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { PlanProvider } from "./plan/PlanContext";
-import { AuthProvider } from "./plan/PlanContext";
+import { PlanProvider, AuthProvider } from "./plan/PlanContext";
 import NavbarClient from "./NavbarClient";
 
 const geistSans = Geist({
@@ -66,7 +65,7 @@ export default function RootLayout({
                     </Link>
                   </div>
 
-                  {/* Navigation Links */}
+                  {/* Navigation Links - Desktop */}
                   <div className="hidden md:flex items-center space-x-8">
                     <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
                       Home
@@ -77,13 +76,10 @@ export default function RootLayout({
                     <Link href="/chat" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
                       AI Chat
                     </Link>
-                    <NavbarClient />
                   </div>
 
-                  {/* Mobile menu button */}
-                  <div className="md:hidden">
-                    <NavbarClient />
-                  </div>
+                  {/* User menu - both mobile and desktop */}
+                  <NavbarClient />
                 </div>
               </div>
             </nav>

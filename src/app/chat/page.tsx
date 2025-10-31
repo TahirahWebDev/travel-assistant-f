@@ -26,6 +26,8 @@ export default function ChatPage() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const didMountRef = useRef(false);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -44,6 +46,15 @@ export default function ChatPage() {
   };
 
   useEffect(() => {
+    // Ensure page and chat container start at top on initial open
+    window.scrollTo({ top: 0, behavior: "auto" });
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = 0;
+    }
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
     scrollToBottom();
   }, [messages]);
 
@@ -120,10 +131,10 @@ export default function ChatPage() {
               </svg>
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">
             AI Travel Assistant
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-base md:text-lg text-gray-600">
             Ask me anything about your travel plans, destinations, or get personalized recommendations
           </p>
         </div>
@@ -131,7 +142,7 @@ export default function ChatPage() {
         {/* Chat Container */}
         <div className="bg-white rounded-3xl shadow-2xl h-full flex flex-col overflow-hidden animate-slide-up">
           {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-4">
+          <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-6 space-y-4">
             {messages.map((message) => (
               <div
                 key={message.id}
