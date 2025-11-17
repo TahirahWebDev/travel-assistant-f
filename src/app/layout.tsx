@@ -41,7 +41,6 @@ const icons = [
 </svg>},
   { href: "#", label: "Itinerary", svg: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 7.5h18M4.5 21h15a1.5 1.5 0 0 0 1.5-1.5V7.5a1.5 1.5 0 0 0-1.5-1.5h-15A1.5 1.5 0 0 0 3 7.5v12A1.5 1.5 0 0 0 4.5 21Z" /></svg> },
   { href: "#", label: "User", svg: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 19.5a7.5 7.5 0 0 1 15 0v.75A2.25 2.25 0 0 1 17.25 22.5h-10.5A2.25 2.25 0 0 1 4.5 20.25v-.75Z" /></svg> },
-  // { href: "#", label: "Search", svg: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M11.25 18a6.75 6.75 0 1 1 0-13.5 6.75 6.75 0 0 1 0 13.5Z" /></svg> },
 ];
 
 export default function RootLayout({
@@ -60,15 +59,17 @@ export default function RootLayout({
                   {/* Logo */}
                   <div className="flex items-center">
                     <Link href="/" className="flex items-center">
-                      <img src="/download.png" alt="AI-TraWell Logo" className="h-12 w-auto" />
+                      <img src="/logo.png" alt="AI-TraWell Logo" className="h-12 w-auto" />
                       <span className="ml-2 text-xl font-bold text-gray-900">AI-TraWell</span>
                     </Link>
                   </div>
 
-                  {/* Navigation Links - Desktop */}
                   <div className="hidden md:flex items-center space-x-8">
                     <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
                       Home
+                    </Link>
+                    <Link href="/about" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                      About
                     </Link>
                     <Link href="/plan" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
                       Plan Trip
@@ -78,13 +79,12 @@ export default function RootLayout({
                     </Link>
                   </div>
 
-                  {/* User menu - both mobile and desktop */}
                   <NavbarClient />
                 </div>
               </div>
             </nav>
 
-            {/* Add padding to account for fixed navbar */}
+
             <div className="pt-16">
               {children}
             </div>

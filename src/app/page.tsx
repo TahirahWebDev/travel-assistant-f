@@ -6,7 +6,7 @@ export default function Home() {
   const { isLoggedIn } = useAuth();
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="hero min-h-screen w-full bg-gradient-to-br from-blue-50 via-white to-purple-50">
 
       {/* Main Content */}
       <main className="relative">
