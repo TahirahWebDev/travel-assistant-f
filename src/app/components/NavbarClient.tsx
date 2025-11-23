@@ -2,20 +2,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "./plan/PlanContext";
+import { useAuth } from "../plan/PlanContext";
 
 export default function NavbarClient() {
-  const { isLoggedIn, user, logout } = useAuth();
+  const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
 
-  const getInitials = (name: string) => {
-    if (!name) return "?";
-    return name.trim().charAt(0).toUpperCase();
-  };
-
-  
   const handleMenuClick = (callback?: () => void) => {
     setMenuOpen(false);
     if (callback) callback();
