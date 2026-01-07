@@ -26,3 +26,25 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+
+::selection {
+  background: #bfdbfe; /* Soft blue highlight instead of harsh blue */
+  color: #1e3a8a;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased; /* Makes fonts look sharper on Mac */
+}
+
+@layer base {
+  input, select, textarea {
+    @apply text-slate-900 font-medium !important;
+  }
+  
+  /* This makes the placeholder slightly lighter but still visible */
+  input::placeholder {
+    @apply text-slate-400 opacity-100 !important;
+  }
+}
